@@ -1,4 +1,5 @@
 \documentclass{sigchi}
+\ifx\HCode\UnDef\else\hypersetup{tex4ht}\fi
 
 % Use this command to override the default ACM copyright statement
 % (e.g. for preprints).  Consult the conference website for the
@@ -16,12 +17,15 @@
 % \pagenumbering{arabic}
 
 % Load basic packages
+\usepackage[pdflatex]{hyperref}
 \usepackage{balance}  % to better equalize the last page
 \usepackage{graphics} % for EPS, load graphicx instead 
 \usepackage[T1]{fontenc}
 \usepackage{txfonts}
 \usepackage{mathptmx}
-\usepackage[pdftex]{hyperref}
+
+% \usepackage[latex]{hyperref}
+
 \usepackage{color}
 \usepackage{booktabs}
 \usepackage{textcomp}

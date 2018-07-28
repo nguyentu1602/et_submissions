@@ -1,4 +1,5 @@
 \documentclass{sigchi}
+%% \documentclass{sig-alternate-05-2015}
 
 % Use this command to override the default ACM copyright statement
 % (e.g. for preprints).  Consult the conference website for the
@@ -104,92 +105,119 @@
     \email{cuong.nguyen@gatech.edu}}\\
 }
 
+
 \maketitle
 
 \begin{abstract}
-  UPDATED---\today. This sample paper describes the formatting
-  requirements for SIGCHI conference proceedings, and offers
-  recommendations on writing for the worldwide SIGCHI
-  readership. Please review this document even if you have submitted
-  to SIGCHI conferences before, as some format details have changed
-  relative to previous years. Abstracts should be about 150 words and
-  are required.
+  Recent advances in Machine Learning and Data Mining enable new
+  branches of educational research to thrive, particularly e-learning and data
+  capturing through e-learning systems. \cite{romero2010educational}
+  Academic performance research benefits strongly from this trend
+  through better predictive models. In this paper,
+  I investigate \textbf{hierarchical models} - a flexible family of advanced
+  parametric models - that could achieve not only high out-of-sample prediction
+  power but also meaningful confidence intervals for statistical
+  inference. Reviews and empirical comparisons versus traditional machine
+  learning methods on an educational dataset are also provided in details.
+  
 \end{abstract}
 
 \category{H.5.m.}{Information Interfaces and Presentation
-  (e.g. HCI)}{Miscellaneous} \category{See
-  \url{http://acm.org/about/class/1998/} for the full list of ACM
-  classifiers. This section is required.}{}{}
+  (e.g. HCI)}{Miscellaneous} \category{J.4.m.}{Computer Applications}
+{SOCIAL AND BEHAVIORAL SCIENCES} \category{G.3.m.}{Mathematics of computing}{Probability and
+  Statistics - Multivariate statistics} \category{G.3.m.}{Mathematics of
+  computing}{Probability and Statistics - Statistical Computing}
+\category{I.5.1.m.}{Computing methodologies}{Pattern Recognition - Models}
 
-\keywords{\plainkeywords}
+\keywords{Parametric Models; Education Research; E-learning; Student Performance; Predictive
+  Modeling; Statistical Inference; Bayesian computation; STAN; Hierarchical
+  Models; MCMC; Approximation; Maximum a posteriori estimation; Confidence
+  Interval; Prediction Interval}
 
-\section{Introduction}
+\section{Education research review}
+The paper briefly compares the evolution of quantitative predictive methods in
+education research to motivate interest in advanced parametric methods.
 
-This format is to be used for submissions that are published in the
-conference proceedings. We wish to give this volume a consistent,
-high-quality appearance. We therefore ask that authors follow some
-simple guidelines. You should format your paper exactly like this
-document. The easiest way to do this is to replace the content with
-your own material.  This document describes how to prepare your
-submissions using \LaTeX.
+\subsection{Parametric Statistical Models}
+Traditionally, research in education and educational
+policies have applied similar quantitative methods to those used in the social sciences
+\cite{gelman2009quantitative}, because the main goal of these
+educational inquiries is to established causal effects. Parametric, sparse models which allow ease of hypothesis testing
+therefore are both prevalent and important, while black-box,
+flexible predictive models are not popular. \cite{teo2014handbook}
 
-\section{Page Size and Columns}
-On each page your material should fit within a rectangle of 7 $\times$
-9.15 inches (18 $\times$ 23.2 cm), centered on a US Letter page (8.5
-$\times$ 11 inches), beginning 0.85 inches (1.9 cm) from the top of
-the page, with a 0.3 inches (0.85 cm) space between two 3.35 inches
-(8.4 cm) columns. Right margins should be justified, not
-ragged. Please be sure your document and PDF are US letter and not A4.
+Good parametric models offer prediction capability with both point estimates
+and confidence intervals (CIs). However, unlike causality testing, prediction only take secondary roles in traditional education research,
+so these models are not built to optimize for out-of-sample prediction. \cite{romero2010educational}.
+
+\subsection{Recent Machine learning methods}
+Advances in Machine Learning enable new
+branches of educational research to thrive, particularly e-learning. \cite{romero2010educational}
+New ways of generating data and new types
+of data through e-learning enable researchers to build better predictive models. People apply more modern methods on these datasets, and
+\textbf{ensembles, neural nets} and \textbf{SVMs} are the most favorable methods.  \cite{shahiri2015review}, \cite{amrieh2016mining} 
+
+The body of work that apply predictive ML methods
+on educational data tends to weight practicality more than interpret-ability, and
+they optimize for overall prediction power instead of answering traditional inference questions. \cite{romero2010educational, meier2016predicting}
+
+\section{Research goal and methodology}
+Could we build flexible predictive models
+that offer \textit{not only high out-of-sample prediction
+  power but also meaningful confidence intervals for statistical
+  inference.}?. A family of advanced parametric models that could satisfy this
+demand is \textbf{Hierarchical models} - we will investigate their construction
+process and predictive power in this paper.
+
+\subsection{Hierarchical modeling and prediction}
+Hierarchical modeling and prediction offer a balanced pay-off between 
+predictive accuracy and interpretability \cite{gelmanbayesian,
+skrondal2009prediction, kaplan2016causal} Hierarchical models are particularly suitable for
+educational research datasets, because education data are generally collected
+from a hierarchy. For example, you can have performance scores for students in a
+state, at different districts, different schools within the same district, different
+class level within the same school etc. Of course, if the data are generated in
+a true controlled fashion with balanced groups representation across all
+covariates, then we can just do a pooled t-test, but these are survey or
+longitudinal data with known biases and imbalances. \cite{konig2017bayesian}
+
+There are few studies focusing on hierarchical models in academic performance
+\cite{tsai2015hierarchical, subedi2015measuring}, and there is no current study that focuses
+on building a highly predictive hierarchical model first before interpreting
+confidence intervals and statistical significance.
+
+\subsection{Bayesian Technique in Hierarchical modeling}
+Fitting hierarchical model is one of the
+major usage of Bayesian techniques. Previously, due to
+computational complexity of the sampling algorithms in these Bayesian techniques, building hierarchical models are hard.
+However, recent advances in hardware and software have opened up these techniques to a wider range of social science problems. \cite{carpenter2017stan}
+
+\subsection{Comparison of modeling techniques}
+This research builds hierarchical models on a student performance dataset
+and compares those hierarchical models' predictive power against
+state-of-the-art esembles/tree-based models built on the same data.
+
+In particular, Amrieh et. al. \cite{amrieh2016mining}
+apply ensemble methods on features of students collecting through an electronic system to predict academic performance and show that ensemble
+models achieve strong out-of-sample
+prediction. However, the predicted values themselves do not come with useful information that aids decision making, such as confidence intervals and
+significant of contributing factors. 
+\cite{efron2016computer, meier2016predicting} For example, the dataset in
+\cite{amrieh2016mining} is unbalanced: Technology has 95 students
+vs. Maths has 21 students, so performance prediction for a new Maths
+student should be a lot less certain than that of a new Technology
+student. Meanwhile, none of the ensemble models can reflect such confidence adjustments based on their predictive values.
+
+NEED TO MOVE THIS SECTION AFTER THE ESEMBLE MODEL PERFORMANCE BIT
+
+
 
 \section{Typeset Text}
 The styles contained in this document have been modified from the
 default styles to reflect ACM formatting conventions. For example,
 content paragraphs like this one are formatted using the Normal style.
 
-\LaTeX\ sometimes will create overfull lines that extend into columns.
-To attempt to combat this, the \texttt{.cls} file has a command,
-\texttt{{\textbackslash}sloppy}, that essentially asks \LaTeX\ to
-prefer underfull lines with extra whitespace.  For more details on
-this, and info on how to control it more finely, check out
-{\url{http://www.economics.utoronto.ca/osborne/latex/PMAKEUP.HTM}}.
-
-\subsection{Title and Authors}
-
-Your paper's title, authors and affiliations should run across the
-full width of the page in a single column 17.8 cm (7 in.) wide.  The
-title should be in Helvetica or Arial 18-point bold.  Authors' names
-should be in Times New Roman or Times Roman 12-point bold, and
-affiliations in 12-point regular.  
-
-See \texttt{{\textbackslash}author} section of this template for
-instructions on how to format the authors. For more than three
-authors, you may have to place some address information in a footnote,
-or in a named section at the end of your paper. Names may optionally
-be placed in a single centered row instead of at the top of each
-column. Leave one 10-point line of white space below the last line of
-affiliations.
-
-\subsection{Abstract and Keywords}
-
-Every submission should begin with an abstract of about 150 words,
-followed by a set of Author Keywords and ACM Classification
-Keywords. The abstract and keywords should be placed in the left
-column of the first page under the left half of the title. The
-abstract should be a concise statement of the problem, approach, and
-conclusions of the work described. It should clearly state the paper's
-contribution to the field of HCI\@.
-
-\subsection{Normal or Body Text}
-
-Please use a 10-point Times New Roman or Times Roman font or, if this
-is unavailable, another proportional font with serifs, as close as
-possible in appearance to Times Roman 10-point. Other than Helvetica
-or Arial headings, please use sans-serif or non-proportional fonts
-only for special purposes, such as source code text.
-
-\subsection{First Page Copyright Notice}
-This template include a sample ACM copyright notice at the bottom of
-page 1, column 1.  Upon acceptance, you will be provided with the
+Upon acceptance, you will be provided with the
 appropriate copyright statement and unique DOI string for publication.
 Accepted papers will be distributed in the conference
 publications. They will also be placed in the ACM Digital Library,
@@ -519,7 +547,7 @@ black.
 % REFERENCES FORMAT
 % References must be the same font size as other body text.
 \bibliographystyle{SIGCHI-Reference-Format}
-\bibliography{sample}
+\bibliography{main}
 
 \end{document}
 
