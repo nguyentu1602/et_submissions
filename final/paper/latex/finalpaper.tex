@@ -125,16 +125,14 @@
 \category{H.5.m.}{Information Interfaces and Presentation
   (e.g. HCI)}{Miscellaneous} \category{J.4.m.}{Computer Applications}
 {SOCIAL AND BEHAVIORAL SCIENCES} \category{G.3.m.}{Mathematics of computing}{Probability and
-  Statistics - Multivariate statistics} \category{G.3.m.}{Mathematics of
-  computing}{Probability and Statistics - Statistical Computing}
-\category{I.5.1.m.}{Computing methodologies}{Pattern Recognition - Models}
+  Statistics - Multivariate statistics} \category{I.5.1.m.}{Computing methodologies}{Pattern Recognition - Models}
 
 \keywords{Parametric Models; Education Research; E-learning; Student Performance; Predictive
   Modeling; Statistical Inference; Bayesian computation; STAN; Hierarchical
-  Models; MCMC; Approximation; Maximum a posteriori estimation; Confidence
+  Models; MCMC; Confidence
   Interval; Prediction Interval}
 
-\section{Education research review}
+\section{Historical review of Education research}
 The paper briefly compares the evolution of quantitative predictive methods in
 education research to motivate interest in advanced parametric methods.
 
@@ -142,73 +140,98 @@ education research to motivate interest in advanced parametric methods.
 Traditionally, research in education and educational
 policies have applied similar quantitative methods to those used in the social sciences
 \cite{gelman2009quantitative}, because the main goal of these
-educational inquiries is to established causal effects. Parametric, sparse models which allow ease of hypothesis testing
+educational inquiries is to \textbf{establish causal effects}. \textbf{Parametric}, sparse models which allow ease of \textbf{hypothesis testing}
 therefore are both prevalent and important, while black-box,
 flexible predictive models are not popular. \cite{teo2014handbook}
 
-Good parametric models offer prediction capability with both point estimates
-and confidence intervals (CIs). However, unlike causality testing, prediction only take secondary roles in traditional education research,
-so these models are not built to optimize for out-of-sample prediction. \cite{romero2010educational}.
+Some parametric models offer \textbf{prediction capability} with 
+\textbf{confidence intervals (CIs)}. However, unlike causality testing, prediction only take secondary roles in traditional education research,
+so these models are not built to optimize for \textbf{out-of-sample accuracy}. \cite{romero2010educational}.
 
 \subsection{Recent Machine learning methods}
 Advances in Machine Learning enable new
-branches of educational research to thrive, particularly e-learning. \cite{romero2010educational}
-New ways of generating data and new types
-of data through e-learning enable researchers to build better predictive models. People apply more modern methods on these datasets, and
-\textbf{ensembles, neural nets} and \textbf{SVMs} are the most favorable methods.  \cite{shahiri2015review}, \cite{amrieh2016mining} 
+branches of educational research to thrive, particularly \textbf{intelligent learning systems}. \cite{romero2010educational}
+New ways of generating data and richer features through e-learning systems enable researchers to build better predictive models. People apply more modern methods on these datasets, and
+\textbf{ensembles, neural nets} and \textbf{SVMs} are the most common methods
+when optimizing for \textbf{out-of-sample accuracy}. \cite{shahiri2015review}, \cite{amrieh2016mining} 
 
 The body of work that apply predictive ML methods
-on educational data tends to weight practicality more than interpret-ability, and
-they optimize for overall prediction power instead of answering traditional inference questions. \cite{romero2010educational, meier2016predicting}
+on educational data tends to \textit{weight practicality more than interpretability}, and
+they optimize for overall predictive accuracy instead of answering traditional inference questions. \cite{romero2010educational, meier2016predicting}
 
 \section{Research goal and methodology}
 Could we build flexible predictive models
 that offer \textit{not only high out-of-sample prediction
   power but also meaningful confidence intervals for statistical
-  inference.}?. A family of advanced parametric models that could satisfy this
-demand is \textbf{Hierarchical models} - we will investigate their construction
+  inference.}? A family of advanced parametric models that could satisfy this
+demand is \textbf{hierarchical models} - we will investigate their construction
 process and predictive power in this paper.
 
 \subsection{Hierarchical modeling and prediction}
-Hierarchical modeling and prediction offer a balanced pay-off between 
-predictive accuracy and interpretability \cite{gelmanbayesian,
-skrondal2009prediction, kaplan2016causal} Hierarchical models are particularly suitable for
+Hierarchical models offer a balanced pay-off between 
+predictive accuracy and interpretability. \textit{\textbf{Hierarchical models are particularly suitable for
 educational research datasets, because education data are generally collected
-from a hierarchy. For example, you can have performance scores for students in a
+from a hierarchy.}} \cite{
+skrondal2009prediction, kaplan2016causal} For example, you can have performance
+scores for students in a
 state, at different districts, different schools within the same district, different
-class level within the same school etc. Of course, if the data are generated in
+class levels within the same school etc. Of course, if the data are generated in
 a true controlled fashion with balanced groups representation across all
 covariates, then we can just do a pooled t-test, but these are survey or
-longitudinal data with known biases and imbalances. \cite{konig2017bayesian}
+longitudinal data with known \textbf{biases} and \textbf{imbalances}. \cite{konig2017bayesian}
 
-There are few studies focusing on hierarchical models in academic performance
+There are few studies focusing on \textit{hierarchical models in academic performance}
 \cite{tsai2015hierarchical, subedi2015measuring}, and there is no current study that focuses
 on building a highly predictive hierarchical model first before interpreting
-confidence intervals and statistical significance.
+statistical significance.
 
-\subsection{Bayesian Technique in Hierarchical modeling}
+\subsection{Bayesian Techniques in Hierarchical modeling}
 Fitting hierarchical model is one of the
-major usage of Bayesian techniques. Previously, due to
+major usage of \textbf{Bayesian techniques}. Previously, due to
 computational complexity of the sampling algorithms in these Bayesian techniques, building hierarchical models are hard.
 However, recent advances in hardware and software have opened up these techniques to a wider range of social science problems. \cite{carpenter2017stan}
 
 \subsection{Comparison of modeling techniques}
-This research builds hierarchical models on a student performance dataset
+In comming sections, this research builds hierarchical models on a student
+performance dataset
 and compares those hierarchical models' predictive power against
-state-of-the-art esembles/tree-based models built on the same data.
+state-of-the-art ensembles/tree models built on the same data.
 
-In particular, Amrieh et. al. \cite{amrieh2016mining}
-apply ensemble methods on features of students collecting through an electronic system to predict academic performance and show that ensemble
-models achieve strong out-of-sample
-prediction. However, the predicted values themselves do not come with useful information that aids decision making, such as confidence intervals and
-significant of contributing factors. 
-\cite{efron2016computer, meier2016predicting} For example, the dataset in
+
+\section{Exploratory data analysis}
+TODO
+
+\subsection{Reference ensembles/tree models}
+Reference state-of-the-art ensembles/tree models are taken from \textbf{Amrieh
+et. al.} \cite{amrieh2016mining}, where the authors built learners on
+features of students collecting through an electronic
+system to predict academic performance and show that ensemble
+models achieve strong out-of-sample prediction. I reproduced their results with
+accuracy listed in table TODO:
+
+
+\subsubsection{Shortcomings of ensembles/tree methods}
+For inference, However, the predicted values themselves do not come with useful
+information
+that aids decision making, such as confidence intervals and
+significance of contributing factors. 
+\cite{efron2016computer, meier2016predicting} E.g, the dataset in
 \cite{amrieh2016mining} is unbalanced: Technology has 95 students
 vs. Maths has 21 students, so performance prediction for a new Maths
 student should be a lot less certain than that of a new Technology
-student. Meanwhile, none of the ensemble models can reflect such confidence adjustments based on their predictive values.
+student. Meanwhile, none of the ensemble models can reflect such confidence
+adjustments based on their predictive values.
 
-NEED TO MOVE THIS SECTION AFTER THE ESEMBLE MODEL PERFORMANCE BIT
+\section{Model specifications and assumptions}
+\subsection{Hierarchy and priors selection}
+\subsection{Model selection}
+\subsection{Model performance and diagnosis}
+\subsection{Model interpretation}
+
+
+\section{Conclusion and future direction}
+
+
 
 
 
