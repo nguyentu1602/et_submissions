@@ -29,3 +29,18 @@ https://education-stan.github.io/
 ## Data
 https://www.kaggle.com/aljarah/xAPI-Edu-Data/home
 
+
+## Run jupyter notebook on server side:
+On the server side:
+```
+ # configure jupyter and prompt for password
+ jupyter notebook --generate-config
+ jupass=`python -c "from notebook.auth import passwd; print(passwd())"`
+ echo "c.NotebookApp.password = u'"$jupass"'" >> $HOME/.jupyter/jupyter_notebook_config.py
+ echo "c.NotebookApp.ip = '*'" >> $HOME/.jupyter/jupyter_notebook_config.py
+ echo "c.NotebookApp.open_browser = False" >>  $HOME/.jupyter/jupyter_notebook_config.py 
+```
+
+On the client side:
+```
+```

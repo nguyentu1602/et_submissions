@@ -41,7 +41,7 @@
 % Paper metadata (use plain text, for PDF inclusion and later
 % re-using, if desired).  Use \emtpyauthor when submitting for review
 % so you remain anonymous.
-\def\plaintitle{SIGCHI Conference Proceedings Format}
+\def\plaintitle{Hierarchical modeling in education performance prediction}
 \def\plainauthor{First Author, Second Author, Third Author,
   Fourth Author, Fifth Author, Sixth Author}
 \def\emptyauthor{}
@@ -113,11 +113,11 @@
   branches of educational research to thrive, particularly e-learning and data
   capturing through e-learning systems. \cite{romero2010educational}
   Academic performance research benefits strongly from this trend
-  through better predictive models. In this paper,
+  through better data and models. In this paper,
   I investigate \textbf{hierarchical models} - a flexible family of advanced
-  parametric models - that could achieve not only high out-of-sample prediction
-  power but also meaningful confidence intervals for statistical
-  inference. Reviews and empirical comparisons versus traditional machine
+  parametric models - that could achieve not only high \textbf{out-of-sample prediction
+  power} but also \textbf{meaningful confidence intervals} for \textbf{statistical
+  inference}. Reviews and empirical comparisons versus traditional machine
   learning methods on an educational dataset are also provided in details.
   
 \end{abstract}
@@ -133,7 +133,7 @@
   Interval; Prediction Interval}
 
 \section{Historical review of Education research}
-The paper briefly compares the evolution of quantitative predictive methods in
+The paper reviews the evolution of quantitative predictive methods in
 education research to motivate interest in advanced parametric methods.
 
 \subsection{Parametric Statistical Models}
@@ -146,18 +146,18 @@ flexible predictive models are not popular. \cite{teo2014handbook}
 
 Some parametric models offer \textbf{prediction capability} with 
 \textbf{confidence intervals (CIs)}. However, unlike causality testing, prediction only take secondary roles in traditional education research,
-so these models are not built to optimize for \textbf{out-of-sample accuracy}. \cite{romero2010educational}.
+so these models are not built to optimize for out-of-sample accuracy. \cite{romero2010educational}.
 
 \subsection{Recent Machine learning methods}
-Advances in Machine Learning enable new
+Advances in EdTech enable new
 branches of educational research to thrive, particularly \textbf{intelligent learning systems}. \cite{romero2010educational}
-New ways of generating data and richer features through e-learning systems enable researchers to build better predictive models. People apply more modern methods on these datasets, and
+New ways of generating data and richer features through e-learning systems enable researchers to build better predictive models. People apply more modern methods on these datasets;
 \textbf{ensembles, neural nets} and \textbf{SVMs} are the most common methods
 when optimizing for \textbf{out-of-sample accuracy}. \cite{shahiri2015review}, \cite{amrieh2016mining} 
 
 The body of work that apply predictive ML methods
 on educational data tends to \textit{weight practicality more than interpretability}, and
-they optimize for overall predictive accuracy instead of answering traditional inference questions. \cite{romero2010educational, meier2016predicting}
+they do not focus on answering traditional inference questions. \cite{romero2010educational, meier2016predicting}
 
 \section{Research goal and methodology}
 Could we build flexible predictive models
@@ -167,7 +167,7 @@ that offer \textit{not only high out-of-sample prediction
 demand is \textbf{hierarchical models} - we will investigate their construction
 process and predictive power in this paper.
 
-\subsection{Hierarchical modeling}
+\subsection{Hierarchical modeling in education research}
 Hierarchical models offer a balance between 
 predictive accuracy and interpretability. \textit{\textbf{Hierarchical models are particularly suitable for
 educational research, because education data are generally collected
@@ -179,7 +179,7 @@ scores for students in a
 state, at different districts, different schools within the same district, different
 class levels within the same school etc. Of course, if the data are generated in
 a true controlled fashion with balanced groups representation across all
-covariates, then we can just do a pooled t-test, but these are survey or
+covariates, then we can do a pooled t-test, but these are survey or
 longitudinal data with known \textbf{biases} and \textbf{imbalances}. \cite{konig2017bayesian}
 
 There are few studies focusing on \textit{hierarchical models in academic performance}
@@ -193,16 +193,14 @@ major usage of \textbf{Bayesian techniques}. Previously, due to
 computational complexity of the sampling algorithms in these Bayesian techniques, building hierarchical models are hard.
 However, recent advances in hardware and software have opened up these techniques to a wider range of social science problems. \cite{carpenter2017stan}
 
-\subsection{Comparison of modeling techniques}
+\section{Data overview}
 In coming sections, this research builds hierarchical models on a student
 performance dataset
 and compares those hierarchical models' predictive power against
 state-of-the-art tree-based models built on the same data.
 
-\section{Exploratory data analysis}
-\section{Data overview}
 
-The educational dataset in \cite{amrieh2016mining} is collected from a learning management system (LMS) using an activity tracker. This learning system monitors learning progress like reading an article or watching a training video. 
+The reference educational dataset in \cite{amrieh2016mining} is collected from a learning management system (LMS) using an activity tracker. This learning system monitors learning progress like reading an article or watching a training video. 
 
 The data consist of \textbf{480 student records} and \textbf{17 features}, with final performance as the desired predictive outcome - \ref{fig:gender_outcome}. 
 
@@ -247,8 +245,7 @@ The features are classified into three major categories:
 \subsection{Reference tree-based models}
 Reference state-of-the-art tree-based models are taken from \textbf{Amrieh
 et. al.} \cite{amrieh2016mining}, where the authors built learners on this data and show that ensemble
-models achieve strong out-of-sample prediction. I reproduced their results using \textbf{25pct} of data as hold-out test set with accuracy listed in table TODO:
-
+models achieve strong out-of-sample prediction. I reproduced their results using \textbf{25pct} of data as hold-out test set with accuracy listed in table \ref{tab:accuracy_results}.
 
 \subsection{Shortcomings of tree-based/black-box methods}
 For inference, the predicted values from tree-based/black-box models do not provide useful
@@ -261,351 +258,100 @@ student should be a lot less certain than that of a new IT
 student. Meanwhile, none of the blackbox models can reflect such confidence
 adjustments based on their predictive values.
 
-\section{Model specifications and assumptions}
-\subsection{Hierarchy and priors selection}
-
-\subsection{Model selection}
-\subsection{Model performance and diagnosis}
-\subsection{Model interpretation}
-
-
-\section{Conclusion and future direction}
-
-
-
-
-
-\section{Typeset Text}
-The styles contained in this document have been modified from the
-default styles to reflect ACM formatting conventions. For example,
-content paragraphs like this one are formatted using the Normal style.
-
-Upon acceptance, you will be provided with the
-appropriate copyright statement and unique DOI string for publication.
-Accepted papers will be distributed in the conference
-publications. They will also be placed in the ACM Digital Library,
-where they will remain accessible to thousands of researchers and
-practitioners worldwide. See
-\url{http://acm.org/publications/policies/copyright_policy} for the
-ACM's copyright and permissions policy.
-
-\subsection{Subsequent Pages}
-
-On pages beyond the first, start at the top of the page and continue
-in double-column format.  The two columns on the last page should be
-of equal length.
-
-\begin{figure}
-\centering
-  \includegraphics[width=0.9\columnwidth]{figures/sigchi-logo}
-  \caption{Insert a caption below each figure. Do not alter the
-    Caption style.  One-line captions should be centered; multi-line
-    should be justified. }~\label{fig:figure1}
-\end{figure}
-
-\subsection{References and Citations}
-
-Use a numbered list of references at the end of the article, ordered
-alphabetically by last name of first author, and referenced by numbers
-in
-brackets~\cite{acm_categories,ethics,Klemmer:2002:WSC:503376.503378}.
-Your references should be published materials accessible to the
-public. Internal technical reports may be cited only if they are
-easily accessible (i.e., you provide the address for obtaining the
-report within your citation) and may be obtained by any reader for a
-nominal fee. Proprietary information may not be cited. Private
-communications should be acknowledged in the main text, not referenced
-(e.g., ``[Borriello, personal communication]'').
-
-References should be in ACM citation format:
-\url{http://acm.org/publications/submissions/latex_style}. This
-includes citations to internet
-resources~\cite{acm_categories,cavender:writing,CHINOSAUR:venue,psy:gangnam}
-according to ACM format, although it is often appropriate to include
-URLs directly in the text, as above.
-
-
-% Use a numbered list of references at the end of the article, ordered
-% alphabetically by first author, and referenced by numbers in
-% brackets~\cite{ethics, Klemmer:2002:WSC:503376.503378,
-%   Mather:2000:MUT, Zellweger:2001:FAO:504216.504224}. For papers from
-% conference proceedings, include the title of the paper and an
-% abbreviated name of the conference (e.g., for Interact 2003
-% proceedings, use \textit{Proc. Interact 2003}). Do not include the
-% location of the conference or the exact date; do include the page
-% numbers if available. See the examples of citations at the end of this
-% document. Within this template file, use the \texttt{References} style
-% for the text of your citation.
-
-% Your references should be published materials accessible to the
-% public.  Internal technical reports may be cited only if they are
-% easily accessible (i.e., you provide the address for obtaining the
-% report within your citation) and may be obtained by any reader for a
-% nominal fee.  Proprietary information may not be cited. Private
-% communications should be acknowledged in the main text, not referenced
-% (e.g., ``[Robertson, personal communication]'').
-
+\pagebreak
 \begin{table}
-  \centering
-  \begin{tabular}{l r r r}
-    % \toprule
-    & & \multicolumn{2}{c}{\small{\textbf{Test Conditions}}} \\
-    \cmidrule(r){3-4}
-    {\small\textit{Name}}
-    & {\small \textit{First}}
-      & {\small \textit{Second}}
-    & {\small \textit{Final}} \\
-    \midrule
-    Marsden & 223.0 & 44 & 432,321 \\
-    Nass & 22.2 & 16 & 234,333 \\
-    Borriello & 22.9 & 11 & 93,123 \\
-    Karat & 34.9 & 2200 & 103,322 \\
-    % \bottomrule
-  \end{tabular}
-  \caption{Table captions should be placed below the table. We
-    recommend table lines be 1 point, 25\% black. Minimize use of
-    table grid lines.}~\label{tab:table1}
+	\centering
+	\begin{tabular}{l r}
+		% \toprule
+		
+		{\small\textit{Model}} & {\small \textit{Accuracy}} \\
+		\midrule
+		Decision Tree                & 0.77    \\
+		Random Forest                & 0.83    \\
+		\textbf{Hierarchical Topic x Gender}  & \textbf{0.89}    \\
+		Hierarchical Topic x Country & 0.89    \\
+		&     \\
+		% \bottomrule
+	\end{tabular}
+	\caption{
+		Hierarchical models do better than both decision tree and random forest for out-of-sample prediction.
+		The best hierarchical model (bold) accounts for groups interactions between Topics, Student Gender and 
+		responsible Parent Gender.  	
+	}~\label{tab:accuracy_results}
 \end{table}
 
-\section{Sections}
 
-The heading of a section should be in Helvetica or Arial 9-point bold,
-all in capitals. Sections should \textit{not} be numbered.
+\section{Model building and assumptions}
+This section walks through the parameterization of hierarchical models used, the model assumptions and their justifications. For a quick recap of hierarchical models and visualization, see Figure \ref{fig:hierarchy}; a more detailed treatment is available in \cite{gelmanbayesian}.
 
-\subsection{Subsections}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\columnwidth]{figures/hierarchy.png}
+	\caption{
+		In a hierarchical model, we see data at both individual-level ($\protect y_{t}$) and at group-level. Group-level parameters themselves ($\protect\theta_{i}$) are viewed as a sample from a distribution governed by hyper-parameters ($\protect\mu$ and $\protect\sigma$). 
+		Thus, we view $\protect\theta_{i}$ as being neither entirely different or exactly the same - this is \textit{partial pooling}. 
+	}~\label{fig:hierarchy}	
+	
+\end{figure}
+ 
+\subsection{Hierarchy specifications} 
+Figure \ref{fig:hierarchy} shows how we could view natural groups in the dataset such as Topics, Nationality or Gender as one level above the individual students. Each of these groups has its own average/parameter ($\theta_{i}$), but the groups' averages are related to each others - \textbf{partial pooling}. Partial pooling is very useful in dealing with unbalanced data, where some categories have only a few samples and we must borrow inference/prediction from other groups' parameters - e.g. Topics in Figure \ref{fig:topic_bar}.
 
-Headings of subsections should be in Helvetica or Arial 9-point bold
-with initial letters capitalized.  For sub-sections and
-sub-subsections, a word like \emph{the} or \emph{of} is not
-capitalized unless it is the first word of the heading.
 
-\subsubsection{Sub-subsections}
+\subsection{Model parameterization} 
+At the data level, we have the logistic regression:
+\[ Pr(y_{i} = 1 ) = logit^{-1}(X_{i}\theta_{j[i]}),  \; \text{for i=1,...,n  } \; \; (1) \] 
 
-Headings for sub-subsections should be in Helvetica or Arial 9-point
-italic with initial letters capitalized.  Standard
-\texttt{{\textbackslash}section}, \texttt{{\textbackslash}subsection},
-and \texttt{{\textbackslash}subsubsection} commands will work fine in
-this template.
+Where $\mathbf{X}$ is the matrix of individual-level features and $j[i]$ indexes the Topic/Gender groups that student $i$ belongs to. 
 
-\section{Figures/Captions}
 
-Place figures and tables at the top or bottom of the appropriate
-column or columns, on the same page as the relevant text (see
-Figure~\ref{fig:figure1}). A figure or table may extend across both
-columns to a maximum width of 17.78 cm (7 in.).
+The group-level coefficients $\theta_{j}$ follows another distribution:
 
-\begin{figure*}
-  \centering
-  \includegraphics[width=1.75\columnwidth]{figures/map}
-  \caption{In this image, the map maximizes use of space. You can make
-    figures as wide as you need, up to a maximum of the full width of
-    both columns. Note that \LaTeX\ tends to render large figures on a
-    dedicated page. Image: \ccbynd~ayman on
-    Flickr.}~\label{fig:figure2}
-\end{figure*}
+\[ \theta_{j} \; \mathbf{\texttildelow} \; Gaussian(\mu, \sigma^2_{\theta}),  \; \text{for j=1,..., 48  (48 groups)}  \; \; (2)\] 
 
-Captions should be Times New Roman or Times Roman 9-point bold.  They
-should be numbered (e.g., ``Table~\ref{tab:table1}'' or
-``Figure~\ref{fig:figure1}''), centered and placed beneath the figure
-or table.  Please note that the words ``Figure'' and ``Table'' should
-be spelled out (e.g., ``Figure'' rather than ``Fig.'') wherever they
-occur. Figures, like Figure~\ref{fig:figure2}, may span columns and
-all figures should also include alt text for improved accessibility.
-Papers and notes may use color figures, which are included in the page
-limit; the figures must be usable when printed in black-and-white in
-the proceedings.
+Where $\mu$ is the vector of group-level average per features and $\sigma^2_\theta$ governs how much variability we expect in group-level coefficient $\theta_{j}$. The model for $\theta_{j}$ in (2) allows us to include all 48 groups in the full model without worrying about collinearity, and this two-level parameterization gives the model the name "hierarchical".
 
-The paper may be accompanied by a short video figure up to five
-minutes in length. However, the paper should stand on its own without
-the video figure, as the video may not be available to everyone who
-reads the paper.  
+Several hierarchies types and depths are explored, but for this data, I found a simple 1-level hierarchy of \textbf{Topic x Student Gender x Parent Gender} interaction groups perform the best.
 
-\subsection{Inserting Images}
-When possible, include a vector formatted graphic (i.e. PDF or EPS).
-When including bitmaps,  use an image editing tool to resize the image
-at the appropriate printing resolution (usually 300 dpi).
 
-\section{Quotations}
-Quotations may be italicized when \textit{``placed inline''} (Anab,
-23F).
 
-\begin{quote}
-Longer quotes, when placed in their own paragraph, need not be
-italicized or in quotation marks when indented (Ramon, 39M).  
-\end{quote}
+\subsection{Model performance}
+One caveat for this dataset is that we actually need \textbf{2} logistic models specified by Equation \textbf{(1)} above, because we must classify \textbf{Low vs. Medium/High} and \textbf{High vs. Medium+Low} separately then combine the predictions for a 3-outcome target.
 
-\section{Language, Style, and Content}
+The out-of-sample accuracy of the hierarchical models outperform reference tree-based models in \cite{amrieh2016mining} - shown in Table \ref{tab:accuracy_results}. Not only that, this type of models can also make use of the \textbf{partial pooling} concept to predict outcomes for observations from a new group - by using the group average $\mu$ \cite{gelmanbayesian}.
 
-The written and spoken language of SIGCHI is English. Spelling and
-punctuation may use any dialect of English (e.g., British, Canadian,
-US, etc.) provided this is done consis- tently. Hyphenation is
-optional. To ensure suitability for an international audience, please
-pay attention to the following:
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\columnwidth]{figures/prediction_ci.png}
+	\caption{
+		Uncertainty about out-of-sample predictions are demonstrated for 4 cases across the spectrum here. Since the model generates binary outcomes through MCMC simulation, if the split is 50-50, then the model is really not making any strong assertion - see the \textit{Unsure} case on the left. From left to right, the splits of the simulations get more pronounced, meaning in those predictive samples, the model is more and more certain of its prediction.
+	}~\label{fig:pred_ci}	
+	
+	\centering
+	\includegraphics[width=0.95\columnwidth]{figures/prediction_se.png}
+	\caption{
+		This graph shows the empirical uncertainty of all 120 out-of-sample predictions, measured by standard errors. Notice that about 17pct of these samples have really high uncertainties (>0.4), which means the model almost refuses to classify these samples, and the assignment of these predictions in to classes are almost purely numerical noises.
+	}~\label{fig:pred_se}	
+	
+\end{figure}
 
-\begin{itemize}
-\item Write in a straightforward style.
-\item Try to avoid long or complex sentence structures.
-\item Briefly define or explain all technical terms that may be
-  unfamiliar to readers.
-\item Explain all acronyms the first time they are used in your
-  text---e.g., ``Digital Signal Processing (DSP)''.
-\item Explain local references (e.g., not everyone knows all city
-  names in a particular country).
-\item Explain ``insider'' comments. Ensure that your whole audience
-  understands any reference whose meaning you do not describe (e.g.,
-  do not assume that everyone has used a Macintosh or a particular
-  application).
-\item Explain colloquial language and puns. Understanding phrases like
-  ``red herring'' may require a local knowledge of English.  Humor and
-  irony are difficult to translate.
-\item Use unambiguous forms for culturally localized concepts, such as
-  times, dates, currencies, and numbers (e.g., ``1--5--97'' or
-  ``5/1/97'' may mean 5 January or 1 May, and ``seven o'clock'' may
-  mean 7:00 am or 19:00). For currencies, indicate equivalences:
-  ``Participants were paid {\fontfamily{txr}\selectfont \textwon}
-  25,000, or roughly US \$22.''
-\item Be careful with the use of gender-specific pronouns (he, she)
-  and other gendered words (chairman, manpower, man-months). Use
-  inclusive language that is gender-neutral (e.g., she or he, they,
-  s/he, chair, staff, staff-hours, person-years). See the
-  \textit{Guidelines for Bias-Free Writing} for further advice and
-  examples regarding gender and other personal
-  attributes~\cite{Schwartz:1995:GBF}. Be particularly aware of
-  considerations around writing about people with disabilities.
-\item If possible, use the full (extended) alphabetic character set
-  for names of persons, institutions, and places (e.g.,
-  Gr{\o}nb{\ae}k, Lafreni\'ere, S\'anchez, Nguy{\~{\^{e}}}n,
-  Universit{\"a}t, Wei{\ss}enbach, Z{\"u}llighoven, \r{A}rhus, etc.).
-  These characters are already included in most versions and variants
-  of Times, Helvetica, and Arial fonts.
-\end{itemize}
 
-\section{Accessibility}
-The Executive Council of SIGCHI has committed to making SIGCHI
-conferences more inclusive for researchers, practitioners, and
-educators with disabilities. As a part of this goal, the all authors
-are asked to work on improving the accessibility of their
-submissions. Specifically, we encourage authors to carry out the
-following five steps:
-\begin{enumerate}
-\item Add alternative text to all figures
-\item Mark table headings
-\item Add tags to the PDF
-\item Verify the default language
-\item Set the tab order to ``Use Document Structure''
-\end{enumerate}
-For more information and links to instructions and resources, please
-see: \url{http://chi2016.acm.org/accessibility}.  The
-\texttt{{\textbackslash}hyperref} package allows you to create well tagged PDF files,
-please see the preamble of this template for an example.
+\subsection{Prediction confidence}
+These hierarchical models are fitted using MCMC methods, so a distinctive advantage over black-box models is that each out-of-sample prediction comes with a whole distribution, which allows researchers to assess how confident the model is about a particular point estimate. Figures \ref{fig:pred_ci} and \ref{fig:pred_se} look deeper into different cases where the confidence varies.
 
-\section{Page Numbering, Headers and Footers}
-Your final submission should not contain footer or header information
-at the top or bottom of each page. Specifically, your final submission
-should not include page numbers. Initial submissions may include page
-numbers, but these must be removed for camera-ready. Page numbers will
-be added to the PDF when the proceedings are assembled.
+The ability of this model to allow statistical inference on predictive cases are very useful, because it could aid users to \textbf{not} make a decision. For example, if the model is used to detect cheating or predict adverse drug reaction, refraining from making quick actions on uncertain predictions are almost always better than acting quickly on numerical noises (see Figure \ref{fig:pred_se}). 
 
-\section{Producing and Testing PDF Files}
-
-We recommend that you produce a PDF version of your submission well
-before the final deadline.  Your PDF file must be ACM DL
-Compliant. The requirements for an ACM Compliant PDF are available at:
-{\url{http://www.sheridanprinting.com/typedept/ACM-distilling-settings.htm}}.
-
-Test your PDF file by viewing or printing it with the same software we
-will use when we receive it, Adobe Acrobat Reader Version 10. This is
-widely available at no cost. Note that most
-reviewers will use a North American/European version of Acrobat
-reader, so please check your PDF accordingly.
-
-When creating your PDF from Word, ensure that you generate a tagged
-PDF from improved accessibility. This can be done by using the Adobe
-PDF add-in, also called PDFMaker. Select Acrobat | Preferences from
-the ribbon and ensure that ``Enable Accessibility and Reflow with
-tagged Adobe PDF'' is selected. You can then generate a tagged PDF by
-selecting ``Create PDF'' from the Acrobat ribbon.
+ 
 
 \section{Conclusion}
+This paper demonstrates that it is possible to build advanced
+parametric models - \textbf{hierarchical models} in particular - that can outperform popular machine learning methods in prediction accuracy. Furthermore, hierarchical models also provides meaningful confidence intervals for statistical inference and decision making, which makes them well applicable to education research.
 
-It is important that you write for the SIGCHI audience. Please read
-previous years' proceedings to understand the writing style and
-conventions that successful authors have used. It is particularly
-important that you state clearly what you have done, not merely what
-you plan to do, and explain how your work is different from previously
-published work, i.e., the unique contribution that your work makes to
-the field. Please consider what the reader will learn from your
-submission, and how they will find your work useful. If you write with
-these questions in mind, your work is more likely to be successful,
-both in being accepted into the conference, and in influencing the
-work of our field.
+For future works, and extensions of the models built here with better assumptions and more informative priors could achieve even higher accuracy. Better methodology of model comparison and selection could also be further investigated. Alternatively, deeper inference into the fitted parameters could shed lights on the variability and differences of the groups in the hierarchy, which contributes further domain-specific insights to the educational research community.
 
-\section{Acknowledgments}
 
-Sample text: We thank all the volunteers, and all publications support
-and staff, who wrote and provided helpful comments on previous
-versions of this document. Authors 1, 2, and 3 gratefully acknowledge
-the grant from NSF (\#1234--2012--ABC). \textit{This whole paragraph is
-  just an example.}
-
-% Balancing columns in a ref list is a bit of a pain because you
-% either use a hack like flushend or balance, or manually insert
-% a column break.  http://www.tex.ac.uk/cgi-bin/texfaq2html?label=balance
-% multicols doesn't work because we're already in two-column mode,
-% and flushend isn't awesome, so I choose balance.  See this
-% for more info: http://cs.brown.edu/system/software/latex/doc/balance.pdf
-%
-% Note that in a perfect world balance wants to be in the first
-% column of the last page.
-%
-% If balance doesn't work for you, you can remove that and
-% hard-code a column break into the bbl file right before you
-% submit:
-%
-% http://stackoverflow.com/questions/2149854/how-to-manually-equalize-columns-
-% in-an-ieee-paper-if-using-bibtex
-%
-% Or, just remove \balance and give up on balancing the last page.
-%
 \balance{}
 
-\section{References Format}
-Your references should be published materials accessible to the
-public. Internal technical reports may be cited only if they are
-easily accessible and may be obtained by any reader for a nominal
-fee. Proprietary information may not be cited. Private communications
-should be acknowledged in the main text, not referenced (e.g.,
-[Golovchinsky, personal communication]). References must be the same
-font size as other body text. References should be in alphabetical
-order by last name of first author. Use a numbered list of references
-at the end of the article, ordered alphabetically by last name of
-first author, and referenced by numbers in brackets. For papers from
-conference proceedings, include the title of the paper and the name of
-the conference. Do not include the location of the conference or the
-exact date; do include the page numbers if available. 
-
-References should be in ACM citation format:
-\url{http://www.acm.org/publications/submissions/latex_style}.  This
-includes citations to Internet
-resources~\cite{CHINOSAUR:venue,cavender:writing,psy:gangnam}
-according to ACM format, although it is often appropriate to include
-URLs directly in the text, as above. Example reference formatting for
-individual journal articles~\cite{ethics}, articles in conference
-proceedings~\cite{Klemmer:2002:WSC:503376.503378},
-books~\cite{Schwartz:1995:GBF}, theses~\cite{sutherland:sketchpad},
-book chapters~\cite{winner:politics}, an entire journal
-issue~\cite{kaye:puc},
-websites~\cite{acm_categories,cavender:writing},
-tweets~\cite{CHINOSAUR:venue}, patents~\cite{heilig:sensorama}, and
-online videos~\cite{psy:gangnam} is given here.  See the examples of
-citations at the end of this document and in the accompanying
-\texttt{BibTeX} document. This formatting is a edited version of the
-format automatically generated by the ACM Digital Library
-(\url{http://dl.acm.org}) as ``ACM Ref.'' DOI and/or URL links are
-optional but encouraged as are full first names. Note that the
-Hyperlink style used throughout this document uses blue links;
-however, URLs in the references section may optionally appear in
-black.
 
 % REFERENCES FORMAT
 % References must be the same font size as other body text.
