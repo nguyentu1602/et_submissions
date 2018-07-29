@@ -167,12 +167,14 @@ that offer \textit{not only high out-of-sample prediction
 demand is \textbf{hierarchical models} - we will investigate their construction
 process and predictive power in this paper.
 
-\subsection{Hierarchical modeling and prediction}
+\subsection{Hierarchical modeling}
 Hierarchical models offer a balanced pay-off between 
 predictive accuracy and interpretability. \textit{\textbf{Hierarchical models are particularly suitable for
 educational research datasets, because education data are generally collected
 from a hierarchy.}} \cite{
-skrondal2009prediction, kaplan2016causal} For example, you can have performance
+skrondal2009prediction, kaplan2016causal} 
+
+For example, you can have performance
 scores for students in a
 state, at different districts, different schools within the same district, different
 class levels within the same school etc. Of course, if the data are generated in
@@ -192,28 +194,47 @@ computational complexity of the sampling algorithms in these Bayesian techniques
 However, recent advances in hardware and software have opened up these techniques to a wider range of social science problems. \cite{carpenter2017stan}
 
 \subsection{Comparison of modeling techniques}
-In comming sections, this research builds hierarchical models on a student
+In coming sections, this research builds hierarchical models on a student
 performance dataset
 and compares those hierarchical models' predictive power against
-state-of-the-art ensembles/tree models built on the same data.
-
+state-of-the-art tree-based models built on the same data.
 
 \section{Exploratory data analysis}
-TODO
+\section{Data overview}
+The data in \cite{amrieh2016mining} is an educational data set which is collected from learning management system (LMS) using a learner activity tracker. This component enables monitoring learning progress like reading an article or watching a training video. 
 
-\subsection{Reference ensembles/tree models}
-Reference state-of-the-art ensembles/tree models are taken from \textbf{Amrieh
-et. al.} \cite{amrieh2016mining}, where the authors built learners on
-features of students collecting through an electronic
-system to predict academic performance and show that ensemble
-models achieve strong out-of-sample prediction. I reproduced their results with
-accuracy listed in table TODO:
+The data consist of 480 student records and 17 features/covariates, with final performance as the desired predictive outcome. 
+
+\subsection{Diversity}
+The data consist of 305 males and 175 females. The students come from different origins such as 179 are from Kuwait, 172 are from Jordan, and smaller groups < 30 from Palestine, Iraq, Lebanon, Tunis, Saudi Arabia, Egypt, Syria etc.
 
 
-\subsubsection{Shortcomings of ensembles/tree methods}
-For inference, However, the predicted values themselves do not come with useful
-information
-that aids decision making, such as confidence intervals and
+
+
+\subsection{Features}
+The features are classified into three major categories:
+
+\begin{itemize}
+\item Demographic: gender and nationality etc.
+\item Academic background: topic, grade level and section etc.
+\item Behavioral: raised hand on class, opening resources, answering survey by parents, and school satisfaction.
+\end{itemize}
+
+
+
+
+\subsection{}
+
+
+\subsection{Reference tree-based models}
+Reference state-of-the-art tree-based models are taken from \textbf{Amrieh
+et. al.} \cite{amrieh2016mining}, where the authors built tree-based learners on this data and show that ensemble
+models achieve strong out-of-sample prediction. I reproduced their results using \textbf{25pct} of data as out-of-sample testing with accuracy listed in table TODO:
+
+
+\subsubsection{Shortcomings of tree-based and similar black-box methods}
+For inference, the predicted values from random forest/ensembles do not come with useful
+information that aids decision making, such as confidence intervals and
 significance of contributing factors. 
 \cite{efron2016computer, meier2016predicting} E.g, the dataset in
 \cite{amrieh2016mining} is unbalanced: Technology has 95 students
